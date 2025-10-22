@@ -1,0 +1,77 @@
+# load to-be-sorted values into RAM
+label load_RAM
+	copy_i 0 to ram_address
+	copy_i 15 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 14 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 13 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 12 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 11 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 10 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 9 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 8 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 7 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 6 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 5 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 4 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 3 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 2 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 1 to ram_save
+
+
+
+# our sorted flag
+copy_i 0 to reg_1
+
+# we're doing bubble sort
+label sort_items
+	# check if sorted
+	if_equal_ri reg_1 1 exit
+	
+	copy_i 0 to ram_address
+	# initially assume it as sorted
+	copy_i 1 to reg_1
+	
+	label inner_loop
+		if_equal_ri ram_address 14 sort_items
+		
+		# get our concerned values
+		copy ram_load to reg_2
+		add_ri ram_address 1 ram_address
+		copy ram_load to reg_3
+		
+		# check if they're in order
+		if_le_eq reg_2 reg_3 continue
+		# otherwise, swap them
+		sub_ri ram_address 1 ram_address
+		copy reg_3 to ram_save
+		add_ri ram_address 1 ram_address
+		copy reg_2 to ram_save
+		# update flag to unsorted
+		copy_i 0 to reg_1
+		
+		label continue
+	jump to loc inner_loop
+	
+jump to loc sort_items
+
+
+
+label exit
+jump to loc exit
+
+
+

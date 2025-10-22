@@ -1,0 +1,7 @@
+copy_i 0 to reg_1
+
+add_ri reg_1 1 reg_1
+copy reg_1 to output
+if_less_ri reg_1 5 3
+
+end

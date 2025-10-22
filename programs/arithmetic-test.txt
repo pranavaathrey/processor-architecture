@@ -1,0 +1,20 @@
+# addition & subtraction
+copy_i 255 to reg_1
+copy_i 23 to reg_2
+copy reg_1 to reg_3
+
+add reg_1 reg_2 reg_3
+add_ii 146 23 reg_4
+sub_ri reg_1 22 reg_3
+
+# multiplication & division
+copy_i 255 to reg_1
+copy_i 255 to reg_2
+
+mult reg_1 reg_2 reg_5
+mult_hi_byte copy to reg_4
+
+div_ii 18 2 reg_4
+mod_ii 32 20 reg_5
+
+end

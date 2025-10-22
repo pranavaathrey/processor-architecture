@@ -1,0 +1,32 @@
+copy_i 0 to ram_address
+copy_i 0 to reg_1
+
+#label copy_loop 4
+copy reg_1 to ram_save
+add_ri reg_1 1 reg_1
+
+add_ri ram_address 1 ram_address
+if_le_eq_ri ram_address 15 4
+
+
+copy_i 2 to ram_address
+copy ram_load to reg_2
+
+copy_i 3 to ram_address
+copy ram_load to reg_3
+
+copy_i 4 to ram_address
+copy ram_load to reg_4
+
+copy_i 5 to ram_address
+copy ram_load to reg_5
+
+copy_i 15 to ram_address
+copy ram_load to output
+
+end
+
+
+# counter problem: labels are a bitch.
+# gotta integrate into assembler, make ROM 16-bit addressable,
+# make first 32 bytes reserved for labels.

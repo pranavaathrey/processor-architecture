@@ -1,0 +1,94 @@
+# load 00-be-sorted values into RAM
+label load_RAM
+08: 	C0 0 00 00
+09: 	C0 15 00 3E
+10: 	40 00 1 00
+11: 	C0 14 00 3E
+12: 	40 00 1 00
+13: 	C0 13 00 3E
+14: 	40 00 1 00
+15: 	C0 12 00 3E
+16: 	40 00 1 00
+17: 	C0 11 00 3E
+18: 	40 00 1 00
+19: 	C0 10 00 3E
+20: 	40 00 1 00
+21: 	C0 9 00 3E
+22: 	40 00 1 00
+23: 	C0 8 00 3E
+24: 	40 00 1 00
+25: 	C0 7 00 3E
+26: 	40 00 1 00
+27: 	C0 6 00 3E
+28: 	40 00 1 00
+29: 	C0 5 00 3E
+30: 	40 00 1 00
+31: 	C0 4 00 3E
+32: 	40 00 1 00
+33: 	C0 3 00 3E
+34: 	40 00 1 00
+35: 	C0 2 00 3E
+36: 	40 00 1 00
+37: 	C0 1 00 3E
+
+
+
+
+# clean up 00
+38: C0 0 00 00
+
+
+# we're doing selection sort
+label sort_prep
+39: C0 0 00 01 # iterator i value
+
+label sort_items
+	# check if we've reached the 3A of the array
+40: 	60 01 14 exit
+	
+	# assume current i val has the min
+41: 	40 01 00 05
+	
+42: 	40 01 1 02 # iterator j value
+	label find_minimum
+		# check if we've reached the 3A of 
+		# our inner loop 
+43: 		60 02 15 move_elements
+		
+		# find actual minimum
+44: 		40 05 00 00 
+45: 		40 3F 00 03 # current address val
+46: 		40 02 00 00
+47: 		40 3F 00 04 # new address val
+		
+48: 		25 04 03 continue
+			# otherwise
+49: 			40 02 00 05
+		label continue
+		# continue 00 iterate
+50: 		40 02 1 02
+51: 	E0 00 00 find_minimum
+	
+	label move_elements
+	# swap minimum 00 its correct position
+52: 	40 01 00 00
+53: 	40 3F 00 03 # temp 1
+54: 	40 05 00 00
+55: 	40 3F 00 04 # temp 2
+	
+56: 	40 05 00 00
+57: 	40 03 00 3E # temp 1
+58: 	40 01 00 00
+59: 	40 04 00 3E # temp 2
+	
+	# continue 00 iterate
+60: 	40 01 1 01
+	
+61: E0 00 00 sort_items
+
+
+
+label exit
+62: E0 00 00 exit
+
+

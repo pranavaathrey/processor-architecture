@@ -1,0 +1,94 @@
+# load to-be-sorted values into RAM
+label load_RAM
+	copy_i 0 to ram_address
+	copy_i 15 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 14 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 13 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 12 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 11 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 10 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 9 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 8 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 7 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 6 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 5 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 4 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 3 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 2 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 1 to ram_save
+
+
+
+
+# clean up reg_0
+copy_i 0 to ram_address
+
+
+# we're doing selection sort
+label sort_prep
+copy_i 0 to reg_1 # iterator i value
+
+label sort_items
+	# check if we've reached the end of the array
+	if_equal_ri reg_1 14 exit
+	
+	# assume current i val has the min
+	copy reg_1 to reg_5
+	
+	add_ri reg_1 1 reg_2 # iterator j value
+	label find_minimum
+		# check if we've reached the end of 
+		# our inner loop 
+		if_equal_ri reg_2 15 move_elements
+		
+		# find actual minimum
+		copy reg_5 to ram_address 
+		copy ram_load to reg_3 # current address val
+		copy reg_2 to ram_address
+		copy ram_load to reg_4 # new address val
+		
+		if_mo_eq reg_4 reg_3 continue
+			# otherwise
+			copy reg_2 to reg_5
+		label continue
+		# continue to iterate
+		add_ri reg_2 1 reg_2
+	jump to loc find_minimum
+	
+	label move_elements
+	# swap minimum to its correct position
+	copy reg_1 to ram_address
+	copy ram_load to reg_3 # temp 1
+	copy reg_5 to ram_address
+	copy ram_load to reg_4 # temp 2
+	
+	copy reg_5 to ram_address
+	copy reg_3 to ram_save # temp 1
+	copy reg_1 to ram_address
+	copy reg_4 to ram_save # temp 2
+	
+	# continue to iterate
+	add_ri reg_1 1 reg_1
+	
+jump to loc sort_items
+
+
+
+label exit
+jump to loc exit
+
+

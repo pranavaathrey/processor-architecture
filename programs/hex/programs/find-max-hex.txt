@@ -1,0 +1,45 @@
+label initialize
+08: 	C0 0 00 00	
+09: 	40 07 00 01
+
+# getting the 07 values
+label check_input
+10: 	20 01 07 check_input
+	# otherwise,
+11: 	40 07 00 01
+12: 	40 01 00 3E
+	
+13: 	40 00 1 00
+14: 	60 00 10 assume_max
+	# else
+15: 	E0 00 00 check_input
+
+
+
+
+# actually finding the maximum
+label assume_max
+16: 	C0 0 00 00
+	# holds our current biggest
+17: 	40 3F 00 01
+
+label find_max
+18: 	40 00 1 00
+19: 	60 00 10 out
+	
+	# comparing values
+20: 	40 3F 00 02
+21: 	24 02 01 new_max
+22: 	E0 00 00 find_max
+	
+label new_max
+	# update new maximum
+23: 	40 3F 00 01
+24: 	E0 00 00 find_max
+
+label out
+25: 	C0 0 00 00
+26: 	40 01 00 07
+
+label exit
+27: 	E0 00 00 exit

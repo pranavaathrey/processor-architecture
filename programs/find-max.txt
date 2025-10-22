@@ -1,0 +1,45 @@
+label initialize
+	copy_i 0 to ram_address	
+	copy input to reg_1
+
+# getting the input values
+label check_input
+	if_equal reg_1 input check_input
+	# otherwise,
+	copy input to reg_1
+	copy reg_1 to ram_save
+	
+	add_ri ram_address 1 ram_address
+	if_equal_ri ram_address 10 assume_max
+	# else
+	jump to loc check_input
+
+
+
+
+# actually finding the maximum
+label assume_max
+	copy_i 0 to ram_address
+	# holds our current biggest
+	copy ram_load to reg_1
+
+label find_max
+	add_ri ram_address 1 ram_address
+	if_equal_ri ram_address 10 out
+	
+	# comparing values
+	copy ram_load to reg_2
+	if_more reg_2 reg_1 new_max
+	jump to loc find_max
+	
+label new_max
+	# update new maximum
+	copy ram_load to reg_1
+	jump to loc find_max
+
+label out
+	copy_i 0 to ram_address
+	copy reg_1 to output
+
+label exit
+	jump to loc exit
