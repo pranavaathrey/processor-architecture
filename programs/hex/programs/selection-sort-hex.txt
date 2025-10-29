@@ -1,94 +1,106 @@
-# load 00-be-sorted values into RAM
-label load_RAM
-08: 	C0 0 00 00
-09: 	C0 15 00 3E
-10: 	40 00 1 00
-11: 	C0 14 00 3E
-12: 	40 00 1 00
-13: 	C0 13 00 3E
-14: 	40 00 1 00
-15: 	C0 12 00 3E
-16: 	40 00 1 00
-17: 	C0 11 00 3E
-18: 	40 00 1 00
-19: 	C0 10 00 3E
-20: 	40 00 1 00
-21: 	C0 9 00 3E
-22: 	40 00 1 00
-23: 	C0 8 00 3E
-24: 	40 00 1 00
-25: 	C0 7 00 3E
-26: 	40 00 1 00
-27: 	C0 6 00 3E
-28: 	40 00 1 00
-29: 	C0 5 00 3E
-30: 	40 00 1 00
-31: 	C0 4 00 3E
-32: 	40 00 1 00
-33: 	C0 3 00 3E
-34: 	40 00 1 00
-35: 	C0 2 00 3E
-36: 	40 00 1 00
-37: 	C0 1 00 3E
-
+08: E0 00 00 load_RAM
+label start
 
 
 
 # clean up 00
-38: C0 0 00 00
+09: C0 0 00 00
 
 
 # we're doing selection sort
 label sort_prep
-39: C0 0 00 01 # iterator i value
+
+# iterator i value
+10: C0 0 00 01 
 
 label sort_items
 	# check if we've reached the 3A of the array
-40: 	60 01 14 exit
+11: 	60 01 15 exit
 	
 	# assume current i val has the min
-41: 	40 01 00 05
+12: 	40 01 00 05
 	
-42: 	40 01 1 02 # iterator j value
+	# iterator j value
+13: 	40 01 1 02
+
 	label find_minimum
 		# check if we've reached the 3A of 
-		# our inner loop 
-43: 		60 02 15 move_elements
+		# our inner loop
+14: 		60 02 15 move_elements
 		
 		# find actual minimum
-44: 		40 05 00 00 
-45: 		40 3F 00 03 # current address val
-46: 		40 02 00 00
-47: 		40 3F 00 04 # new address val
+15: 		40 05 00 00 
+			# current address val
+16: 		40 3F 00 03
+17: 		40 02 00 00
+			# new address val
+18: 		40 3F 00 04
 		
-48: 		25 04 03 continue
+19: 		25 04 03 continue
 			# otherwise
-49: 			40 02 00 05
+20: 			40 02 00 05
 		label continue
 		# continue 00 iterate
-50: 		40 02 1 02
-51: 	E0 00 00 find_minimum
+21: 		40 02 1 02
+22: 	E0 00 00 find_minimum
 	
 	label move_elements
 	# swap minimum 00 its correct position
-52: 	40 01 00 00
-53: 	40 3F 00 03 # temp 1
-54: 	40 05 00 00
-55: 	40 3F 00 04 # temp 2
+	# here, 03 == temp 1 and 04 == temp 2
+23: 	40 01 00 00
+24: 	40 3F 00 03 
+25: 	40 05 00 00
+26: 	40 3F 00 04 
 	
-56: 	40 05 00 00
-57: 	40 03 00 3E # temp 1
-58: 	40 01 00 00
-59: 	40 04 00 3E # temp 2
+27: 	40 05 00 00
+28: 	40 03 00 3E 
+29: 	40 01 00 00
+30: 	40 04 00 3E 
 	
 	# continue 00 iterate
-60: 	40 01 1 01
+31: 	40 01 1 01
 	
-61: E0 00 00 sort_items
+32: E0 00 00 sort_items
 
 
 
 label exit
-62: E0 00 00 exit
+33: E0 00 00 exit
 
 
+
+
+
+# load 00-be-sorted values into RAM
+label load_RAM
+34: 	C0 0 00 00
+35: 	C0 15 00 3E
+36: 	40 00 1 00
+37: 	C0 14 00 3E
+38: 	40 00 1 00
+39: 	C0 13 00 3E
+40: 	40 00 1 00
+41: 	C0 12 00 3E
+42: 	40 00 1 00
+43: 	C0 11 00 3E
+44: 	40 00 1 00
+45: 	C0 10 00 3E
+46: 	40 00 1 00
+47: 	C0 9 00 3E
+48: 	40 00 1 00
+49: 	C0 8 00 3E
+50: 	40 00 1 00
+51: 	C0 7 00 3E
+52: 	40 00 1 00
+53: 	C0 6 00 3E
+54: 	40 00 1 00
+55: 	C0 5 00 3E
+56: 	40 00 1 00
+57: 	C0 4 00 3E
+58: 	40 00 1 00
+59: 	C0 3 00 3E
+60: 	40 00 1 00
+61: 	C0 2 00 3E
+62: 	40 00 1 00
+63: 	C0 1 00 3E
+64: E0 00 00 start

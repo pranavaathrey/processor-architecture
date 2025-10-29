@@ -17,6 +17,24 @@ void decimalToHex(const char *decimal, char *hex_out) {
     sprintf(hex_out, "%02X", value); 
 }
 
+void stripComment(char *line) {
+    char *pos1 = strstr(line, "//");
+    char *pos2 = strchr(line, '#');
+
+    char *commentStart = NULL;
+
+    if(pos1 && pos2)
+        commentStart = (pos1 < pos2) ? pos1 : pos2;
+    else if(pos1)
+        commentStart = pos1;
+    else if(pos2)
+        commentStart = pos2;
+
+    // truncate line at comment start
+    if(commentStart)
+        *commentStart = '\0'; 
+}
+
 // look up table for keywords
 typedef struct {
     const char *word;
@@ -270,21 +288,22 @@ int main() {
     }
 
     while (fgets(line, sizeof(line), in)) {
+        stripComment(line);
+
         // strip leading whitespace
         char *trimmed = line;
         while (isspace((unsigned char)*trimmed)) trimmed++;
 
-        if (strncmp(trimmed, "//", 2) == 0 
-        || strncmp(trimmed, "#", 1) == 0)
+        // empty after comment removal
+        if (*trimmed == '\0') 
             continue;
 
         char *token = strtok(line, " \t\r\n");
         if (!token) continue;
 
-        if (strcmp(token, "label") == 0) {
-            // don't emit labels to output
+        // don't emit labels to output
+        if (strcmp(token, "label") == 0) 
             continue;
-        }
 
         while (token) {
             char hexCode[16];

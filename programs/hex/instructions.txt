@@ -1,45 +1,106 @@
-label initialize
-	copy_i 0 to ram_address	
-	copy input to reg_1
+jump to loc load_RAM
+label start
 
-# getting the input values
-label check_input
-	if_equal reg_1 input check_input
-	# otherwise,
-	copy input to reg_1
-	copy reg_1 to ram_save
+
+
+# clean up reg_0
+copy_i 0 to ram_address
+
+
+# we're doing selection sort
+label sort_prep
+
+# iterator i value
+copy_i 0 to reg_1 
+
+label sort_items
+	# check if we've reached the end of the array
+	if_equal_ri reg_1 15 exit
 	
-	add_ri ram_address 1 ram_address
-	if_equal_ri ram_address 10 assume_max
-	# else
-	jump to loc check_input
-
-
-
-
-# actually finding the maximum
-label assume_max
-	copy_i 0 to ram_address
-	# holds our current biggest
-	copy ram_load to reg_1
-
-label find_max
-	add_ri ram_address 1 ram_address
-	if_equal_ri ram_address 10 out
+	# assume current i val has the min
+	copy reg_1 to reg_5
 	
-	# comparing values
-	copy ram_load to reg_2
-	if_more reg_2 reg_1 new_max
-	jump to loc find_max
-	
-label new_max
-	# update new maximum
-	copy ram_load to reg_1
-	jump to loc find_max
+	# iterator j value
+	add_ri reg_1 1 reg_2
 
-label out
-	copy_i 0 to ram_address
-	copy reg_1 to output
+	label find_minimum
+		# check if we've reached the end of 
+		# our inner loop
+		if_equal_ri reg_2 15 move_elements
+		
+		# find actual minimum
+		copy reg_5 to ram_address 
+			# current address val
+		copy ram_load to reg_3
+		copy reg_2 to ram_address
+			# new address val
+		copy ram_load to reg_4
+		
+		if_mo_eq reg_4 reg_3 continue
+			# otherwise
+			copy reg_2 to reg_5
+		label continue
+		# continue to iterate
+		add_ri reg_2 1 reg_2
+	jump to loc find_minimum
+	
+	label move_elements
+	# swap minimum to its correct position
+	# here, reg_3 == temp 1 and reg_4 == temp 2
+	copy reg_1 to ram_address
+	copy ram_load to reg_3 
+	copy reg_5 to ram_address
+	copy ram_load to reg_4 
+	
+	copy reg_5 to ram_address
+	copy reg_3 to ram_save 
+	copy reg_1 to ram_address
+	copy reg_4 to ram_save 
+	
+	# continue to iterate
+	add_ri reg_1 1 reg_1
+	
+jump to loc sort_items
+
+
 
 label exit
-	jump to loc exit
+jump to loc exit
+
+
+
+
+
+# load to-be-sorted values into RAM
+label load_RAM
+	copy_i 0 to ram_address
+	copy_i 15 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 14 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 13 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 12 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 11 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 10 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 9 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 8 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 7 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 6 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 5 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 4 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 3 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 2 to ram_save
+	add_ri ram_address 1 ram_address
+	copy_i 1 to ram_save
+jump to loc start
