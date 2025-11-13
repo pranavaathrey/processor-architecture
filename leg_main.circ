@@ -39,7 +39,8 @@
   <lib desc="#BFH-Praktika" name="9"/>
   <lib desc="#Input/Output-Extra" name="10"/>
   <lib desc="#Soc" name="11"/>
-  <lib desc="file#subcircuits\Basic_8_Bit_Components.circ" name="12">
+  <lib desc="file#subcircuits\Arithmetic_8_Bit_Components.circ" name="12"/>
+  <lib desc="file#subcircuits\Basic_8_Bit_Components.circ" name="13">
     <tool name="memory_8_bit">
       <a name="facing" val="south"/>
     </tool>
@@ -47,7 +48,6 @@
       <a name="facing" val="north"/>
     </tool>
   </lib>
-  <lib desc="file#subcircuits\Arithmetic_8_Bit_Components.circ" name="13"/>
   <main name="main"/>
   <options>
     <a name="gateUndefined" val="ignore"/>
@@ -459,48 +459,48 @@
       <a name="facing" val="north"/>
       <a name="radix" val="10unsigned"/>
     </comp>
-    <comp lib="12" loc="(1140,1020)" name="memory_8_bit"/>
-    <comp lib="12" loc="(1140,1210)" name="memory_8_bit"/>
-    <comp lib="12" loc="(1140,1400)" name="memory_8_bit"/>
-    <comp lib="12" loc="(1140,1590)" name="memory_8_bit"/>
-    <comp lib="12" loc="(1140,640)" name="memory_8_bit"/>
-    <comp lib="12" loc="(1140,830)" name="memory_8_bit"/>
-    <comp lib="12" loc="(500,1310)" name="memory_8_bit">
+    <comp lib="12" loc="(1010,1030)" name="equality"/>
+    <comp lib="12" loc="(1010,1220)" name="equality"/>
+    <comp lib="12" loc="(1010,1410)" name="equality"/>
+    <comp lib="12" loc="(1010,1600)" name="equality"/>
+    <comp lib="12" loc="(1010,1790)" name="equality"/>
+    <comp lib="12" loc="(1010,650)" name="equality"/>
+    <comp lib="12" loc="(1010,840)" name="equality"/>
+    <comp lib="12" loc="(1260,1180)" name="equality"/>
+    <comp lib="12" loc="(1260,1370)" name="equality"/>
+    <comp lib="12" loc="(1260,1560)" name="equality"/>
+    <comp lib="12" loc="(1260,1750)" name="equality"/>
+    <comp lib="12" loc="(1260,610)" name="equality"/>
+    <comp lib="12" loc="(1260,800)" name="equality"/>
+    <comp lib="12" loc="(1260,990)" name="equality"/>
+    <comp lib="12" loc="(1380,1180)" name="equality"/>
+    <comp lib="12" loc="(1380,1370)" name="equality"/>
+    <comp lib="12" loc="(1380,1560)" name="equality"/>
+    <comp lib="12" loc="(1380,1750)" name="equality"/>
+    <comp lib="12" loc="(1380,610)" name="equality"/>
+    <comp lib="12" loc="(1380,800)" name="equality"/>
+    <comp lib="12" loc="(1380,990)" name="equality"/>
+    <comp lib="12" loc="(480,430)" name="multiplier_8_bit"/>
+    <comp lib="12" loc="(730,770)" name="mult_by_4"/>
+    <comp lib="12" loc="(740,1050)" name="equality">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp lib="12" loc="(790,1000)" name="equality">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp lib="12" loc="(890,430)" name="equality">
+      <a name="facing" val="west"/>
+    </comp>
+    <comp lib="13" loc="(1140,1020)" name="memory_8_bit"/>
+    <comp lib="13" loc="(1140,1210)" name="memory_8_bit"/>
+    <comp lib="13" loc="(1140,1400)" name="memory_8_bit"/>
+    <comp lib="13" loc="(1140,1590)" name="memory_8_bit"/>
+    <comp lib="13" loc="(1140,640)" name="memory_8_bit"/>
+    <comp lib="13" loc="(1140,830)" name="memory_8_bit"/>
+    <comp lib="13" loc="(500,1310)" name="memory_8_bit">
       <a name="facing" val="south"/>
     </comp>
-    <comp lib="12" loc="(780,1220)" name="memory_8_bit"/>
-    <comp lib="13" loc="(1010,1030)" name="equality"/>
-    <comp lib="13" loc="(1010,1220)" name="equality"/>
-    <comp lib="13" loc="(1010,1410)" name="equality"/>
-    <comp lib="13" loc="(1010,1600)" name="equality"/>
-    <comp lib="13" loc="(1010,1790)" name="equality"/>
-    <comp lib="13" loc="(1010,650)" name="equality"/>
-    <comp lib="13" loc="(1010,840)" name="equality"/>
-    <comp lib="13" loc="(1260,1180)" name="equality"/>
-    <comp lib="13" loc="(1260,1370)" name="equality"/>
-    <comp lib="13" loc="(1260,1560)" name="equality"/>
-    <comp lib="13" loc="(1260,1750)" name="equality"/>
-    <comp lib="13" loc="(1260,610)" name="equality"/>
-    <comp lib="13" loc="(1260,800)" name="equality"/>
-    <comp lib="13" loc="(1260,990)" name="equality"/>
-    <comp lib="13" loc="(1380,1180)" name="equality"/>
-    <comp lib="13" loc="(1380,1370)" name="equality"/>
-    <comp lib="13" loc="(1380,1560)" name="equality"/>
-    <comp lib="13" loc="(1380,1750)" name="equality"/>
-    <comp lib="13" loc="(1380,610)" name="equality"/>
-    <comp lib="13" loc="(1380,800)" name="equality"/>
-    <comp lib="13" loc="(1380,990)" name="equality"/>
-    <comp lib="13" loc="(480,430)" name="multiplier_8_bit"/>
-    <comp lib="13" loc="(730,770)" name="mult_by_4"/>
-    <comp lib="13" loc="(740,1050)" name="equality">
-      <a name="facing" val="west"/>
-    </comp>
-    <comp lib="13" loc="(790,1000)" name="equality">
-      <a name="facing" val="west"/>
-    </comp>
-    <comp lib="13" loc="(890,430)" name="equality">
-      <a name="facing" val="west"/>
-    </comp>
+    <comp lib="13" loc="(780,1220)" name="memory_8_bit"/>
     <comp lib="2" loc="(1180,1790)" name="Multiplexer">
       <a name="width" val="8"/>
     </comp>
@@ -517,17 +517,36 @@
       <a name="addrWidth" val="10"/>
       <a name="appearance" val="logisim_evolution"/>
       <a name="contents">addr/data: 10 8
-e0 0 0 8 28*0 c0 0 0
-0 40 7 0 1 20 1 7
-a 40 7 0 1 40 1 0
-3e 40 0 1 0 60 0 a
-10 e0 0 0 a c0 0 0
-0 40 3f 0 1 40 0 1
-0 60 0 a 19 40 3f 0
-2 24 2 1 17 e0 0 0
-12 40 3f 0 1 e0 0 0
-12 c0 0 0 0 40 1 0
-7 e0 0 0 1b
+e0 0 0 8 28*0 e0 0 0
+22 c0 0 0 0 c0 0 0
+1 60 1 f 21 40 1 0
+5 40 1 1 2 60 2 f
+17 40 5 0 0 40 3f 0
+3 40 2 0 0 40 3f 0
+4 25 4 3 15 40 2 0
+5 40 2 1 2 e0 0 0
+e 40 1 0 0 40 3f 0
+3 40 5 0 0 40 3f 0
+4 40 5 0 0 40 3 0
+3e 40 1 0 0 40 4 0
+3e 40 1 1 1 e0 0 0
+b e0 0 0 21 c0 0 0
+0 c0 f 0 3e 40 0 1
+0 c0 e 0 3e 40 0 1
+0 c0 d 0 3e 40 0 1
+0 c0 c 0 3e 40 0 1
+0 c0 b 0 3e 40 0 1
+0 c0 a 0 3e 40 0 1
+0 c0 9 0 3e 40 0 1
+0 c0 8 0 3e 40 0 1
+0 c0 7 0 3e 40 0 1
+0 c0 6 0 3e 40 0 1
+0 c0 5 0 3e 40 0 1
+0 c0 4 0 3e 40 0 1
+0 c0 3 0 3e 40 0 1
+0 c0 2 0 3e 40 0 1
+0 c0 1 0 3e e0 0 0
+9
 </a>
       <a name="label" val="PROGRAM"/>
       <a name="line" val="quad"/>
@@ -1314,27 +1333,27 @@ a 40 7 0 1 40 1 0
     <comp lib="1" loc="(820,740)" name="Controlled Buffer">
       <a name="width" val="8"/>
     </comp>
-    <comp lib="12" loc="(330,220)" name="and_8_bit"/>
-    <comp lib="12" loc="(460,830)" name="not_8_bit"/>
-    <comp lib="12" loc="(470,630)" name="and_8_bit"/>
-    <comp lib="12" loc="(470,730)" name="or_8_bit"/>
-    <comp lib="12" loc="(470,930)" name="xor_8_bit"/>
-    <comp lib="12" loc="(740,530)" name="memory_8_bit"/>
-    <comp lib="13" loc="(420,540)" name="negator_8_bit"/>
-    <comp lib="13" loc="(470,410)" name="adder_8_bit"/>
-    <comp lib="13" loc="(480,510)" name="adder_8_bit"/>
-    <comp lib="13" loc="(540,460)" name="equality"/>
-    <comp lib="13" loc="(540,560)" name="equality"/>
-    <comp lib="13" loc="(540,660)" name="equality"/>
-    <comp lib="13" loc="(540,760)" name="equality"/>
-    <comp lib="13" loc="(540,860)" name="equality"/>
-    <comp lib="13" loc="(540,960)" name="equality"/>
-    <comp lib="13" loc="(720,410)" name="multiplier_8_bit"/>
-    <comp lib="13" loc="(730,660)" name="divider_8_bit"/>
-    <comp lib="13" loc="(810,460)" name="equality"/>
-    <comp lib="13" loc="(810,590)" name="equality"/>
-    <comp lib="13" loc="(810,710)" name="equality"/>
-    <comp lib="13" loc="(810,780)" name="equality"/>
+    <comp lib="12" loc="(420,540)" name="negator_8_bit"/>
+    <comp lib="12" loc="(470,410)" name="adder_8_bit"/>
+    <comp lib="12" loc="(480,510)" name="adder_8_bit"/>
+    <comp lib="12" loc="(540,460)" name="equality"/>
+    <comp lib="12" loc="(540,560)" name="equality"/>
+    <comp lib="12" loc="(540,660)" name="equality"/>
+    <comp lib="12" loc="(540,760)" name="equality"/>
+    <comp lib="12" loc="(540,860)" name="equality"/>
+    <comp lib="12" loc="(540,960)" name="equality"/>
+    <comp lib="12" loc="(720,410)" name="multiplier_8_bit"/>
+    <comp lib="12" loc="(730,660)" name="divider_8_bit"/>
+    <comp lib="12" loc="(810,460)" name="equality"/>
+    <comp lib="12" loc="(810,590)" name="equality"/>
+    <comp lib="12" loc="(810,710)" name="equality"/>
+    <comp lib="12" loc="(810,780)" name="equality"/>
+    <comp lib="13" loc="(330,220)" name="and_8_bit"/>
+    <comp lib="13" loc="(460,830)" name="not_8_bit"/>
+    <comp lib="13" loc="(470,630)" name="and_8_bit"/>
+    <comp lib="13" loc="(470,730)" name="or_8_bit"/>
+    <comp lib="13" loc="(470,930)" name="xor_8_bit"/>
+    <comp lib="13" loc="(740,530)" name="memory_8_bit"/>
     <comp lib="8" loc="(235,150)" name="Text">
       <a name="text" val="Opcode"/>
     </comp>
@@ -1667,26 +1686,26 @@ a 40 7 0 1 40 1 0
     <comp lib="1" loc="(820,500)" name="Controlled Buffer"/>
     <comp lib="1" loc="(820,570)" name="Controlled Buffer"/>
     <comp lib="1" loc="(820,640)" name="Controlled Buffer"/>
-    <comp lib="12" loc="(330,220)" name="and_8_bit"/>
-    <comp lib="13" loc="(450,430)" name="equality"/>
-    <comp lib="13" loc="(450,530)" name="equality"/>
-    <comp lib="13" loc="(450,630)" name="less_unsigned"/>
-    <comp lib="13" loc="(450,750)" name="equality"/>
-    <comp lib="13" loc="(540,460)" name="equality"/>
-    <comp lib="13" loc="(540,560)" name="equality"/>
-    <comp lib="13" loc="(540,660)" name="equality"/>
-    <comp lib="13" loc="(540,780)" name="equality"/>
-    <comp lib="13" loc="(540,850)" name="equality"/>
-    <comp lib="13" loc="(540,920)" name="equality"/>
-    <comp lib="13" loc="(720,320)" name="less_signed"/>
-    <comp lib="13" loc="(720,440)" name="less_signed"/>
-    <comp lib="13" loc="(810,350)" name="equality"/>
-    <comp lib="13" loc="(810,470)" name="equality"/>
-    <comp lib="13" loc="(810,540)" name="equality"/>
-    <comp lib="13" loc="(810,610)" name="equality"/>
-    <comp lib="13" loc="(810,710)" name="equality"/>
-    <comp lib="13" loc="(810,750)" name="equality"/>
-    <comp lib="13" loc="(810,790)" name="equality"/>
+    <comp lib="12" loc="(450,430)" name="equality"/>
+    <comp lib="12" loc="(450,530)" name="equality"/>
+    <comp lib="12" loc="(450,630)" name="less_unsigned"/>
+    <comp lib="12" loc="(450,750)" name="equality"/>
+    <comp lib="12" loc="(540,460)" name="equality"/>
+    <comp lib="12" loc="(540,560)" name="equality"/>
+    <comp lib="12" loc="(540,660)" name="equality"/>
+    <comp lib="12" loc="(540,780)" name="equality"/>
+    <comp lib="12" loc="(540,850)" name="equality"/>
+    <comp lib="12" loc="(540,920)" name="equality"/>
+    <comp lib="12" loc="(720,320)" name="less_signed"/>
+    <comp lib="12" loc="(720,440)" name="less_signed"/>
+    <comp lib="12" loc="(810,350)" name="equality"/>
+    <comp lib="12" loc="(810,470)" name="equality"/>
+    <comp lib="12" loc="(810,540)" name="equality"/>
+    <comp lib="12" loc="(810,610)" name="equality"/>
+    <comp lib="12" loc="(810,710)" name="equality"/>
+    <comp lib="12" loc="(810,750)" name="equality"/>
+    <comp lib="12" loc="(810,790)" name="equality"/>
+    <comp lib="13" loc="(330,220)" name="and_8_bit"/>
     <comp lib="8" loc="(235,150)" name="Text">
       <a name="text" val="Opcode"/>
     </comp>

@@ -338,3 +338,6 @@ int main() {
     printf("Conversion complete. Output saved to binary.bin\n");
     return 0;
 }
+
+// TODO: fix label address when inline comments are involved
+// TODO: add const support
