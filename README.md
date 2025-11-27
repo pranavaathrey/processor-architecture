@@ -36,3 +36,9 @@ Sample assembly programs were used for verification:
 
 There are more such programs (and assembled binaries) that can be found in the `binaries` directory.
 
+Here is a video demonstration of compiling and running the two mentioned programs:
+<p>
+    <a href="https://youtu.be/PkqjSfT5Vvo" target="_blank">
+        <img src="images/thumbnail.png" alt="video thumbnail" width="640" height="360" border="2" />
+    </a>
+</p>
